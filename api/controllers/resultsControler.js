@@ -49,25 +49,6 @@ module.exports.GET_RESULTS = (req, res) => {
 
 //geting all result by scoreboard id
 
-// module.exports.GET_SB_RESULTS = (req, res) => {
-//   let scoreboardResults = [];
-//   let resultsObj = [];
-
-//   ScoreboardSchema.findOne({ _id: req.params.id }).then((result) => {
-//     scoreboardResults = result.results_ids;
-//     scoreboardResults.forEach((element) => {
-//       ScoreboardResultSchema.find({ _id: element })
-//         .sort()
-//         .then((scoreObj) => {
-//           return res.status(200).json({ results: scoreObj });
-//         });
-//     });
-//   });
-
-//   //   console.log(scoreboardResults);
-//   //   console.log(resultsObj);
-// };
-
 module.exports.GET_SB_RESULTS = async function (req, res) {
   const data = await ScoreboardSchema.aggregate([
     {
