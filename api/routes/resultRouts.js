@@ -5,6 +5,7 @@ const {
   EDIT_TITLE,
   GET_RESULTS,
   GET_SB_RESULTS,
+  GETRESULUTSSB,
 } = require("../controllers/resultsControler");
 
 router.post("/createScore", CREATE_SB_RESULT);
@@ -14,5 +15,7 @@ router.put("/editTitle/:id", EDIT_TITLE);
 router.get("/getAllResults", GET_RESULTS);
 
 router.get("/getAllResultsByScoreboardId/:id", GET_SB_RESULTS);
+
+router.get("/test/:id", GETRESULUTSSB);
 
 module.exports = router;

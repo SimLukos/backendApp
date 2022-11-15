@@ -68,3 +68,14 @@ module.exports.GET_SB_RESULTS = async function (req, res) {
 
   return res.status(200).json({ scoreboard: sorted });
 };
+
+// testing other option
+module.exports.GETRESULUTSSB = (req, res) => {
+  const scoreboardId = req.params.id;
+
+  ScoreboardResultSchema.find({ scoreboard_id: scoreboardId })
+    .sort([[`points`, -1]])
+    .exec((err, docs) => {
+      return res.status(200).json({ scores: docs });
+    });
+};
