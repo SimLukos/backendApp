@@ -1,5 +1,5 @@
 // schema
-const ScoreboardSchema = require("../models/scoreboardModel");
+const ScoreboardSchema = require('../models/scoreboardModel');
 
 //creating scoreboard
 module.exports.CREATE_SB = (req, res) => {
@@ -11,7 +11,7 @@ module.exports.CREATE_SB = (req, res) => {
   });
 
   scoreboard.save().then((result) => {
-    return res.status(200).json({ response: "Scoreboard is cretated." });
+    return res.status(200).json({ response: 'Scoreboard is cretated.' });
   });
 };
 
@@ -22,7 +22,7 @@ module.exports.EDIT_SB_NAME = (req, res) => {
     { name: req.body.editedName }
   ).then((result) => {
     return res.status(200).json({
-      statusMessage: "Eddited successfully",
+      statusMessage: 'Eddited successfully',
       editedScoreboard: result,
     });
   });
@@ -35,13 +35,13 @@ module.exports.EDIT_SB_DIREC = async (req, res) => {
   }).exec();
   console.log(currentScoreboard);
 
-  function Direction(value) {
+  function direction(value) {
     switch (value) {
-      case "ASC":
-        value = "DESC";
+      case 'ASC':
+        value = 'DESC';
         break;
-      case "DESC":
-        value = "ASC";
+      case 'DESC':
+        value = 'ASC';
     }
     return value;
   }
@@ -49,11 +49,11 @@ module.exports.EDIT_SB_DIREC = async (req, res) => {
   ScoreboardSchema.updateOne(
     { _id: req.params.id },
     {
-      scoreDirection: Direction(currentScoreboard.scoreDirection),
+      scoreDirection: direction(currentScoreboard.scoreDirection),
     }
   ).then((result) => {
     return res.status(200).json({
-      statusMessage: "Eddited successfully",
+      statusMessage: 'Eddited successfully',
       editedScoreboard: result,
     });
   });

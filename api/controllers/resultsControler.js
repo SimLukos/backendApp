@@ -1,6 +1,6 @@
-const ObjectId = require("mongoose").Types.ObjectId;
-const ScoreboardResultSchema = require("../models/resultModel");
-const ScoreboardSchema = require("../models/scoreboardModel");
+const ObjectId = require('mongoose').Types.ObjectId;
+const ScoreboardResultSchema = require('../models/resultModel');
+const ScoreboardSchema = require('../models/scoreboardModel');
 
 // creating result
 module.exports.CREATE_SB_RESULT = (req, res) => {
@@ -37,7 +37,7 @@ module.exports.EDIT_TITLE = (req, res) => {
   ScoreboardResultSchema.findByIdAndUpdate(req.params.id, {
     title: req.body.editedTitle,
   }).exec();
-  return res.status(200).json({ statusMessage: "Eddited successfully." });
+  return res.status(200).json({ statusMessage: 'Eddited successfully.' });
 };
 
 // geting all results
@@ -53,10 +53,10 @@ module.exports.GET_SB_RESULTS = async function (req, res) {
   const data = await ScoreboardSchema.aggregate([
     {
       $lookup: {
-        from: "results",
-        localField: "results_ids",
-        foreignField: "id",
-        as: "scoreboard_results",
+        from: 'results',
+        localField: 'results_ids',
+        foreignField: 'id',
+        as: 'scoreboard_results',
       },
     },
     {
@@ -64,9 +64,21 @@ module.exports.GET_SB_RESULTS = async function (req, res) {
     },
   ]).exec();
 
-  const sorted = data[0].scoreboard_results.sort((a, b) => b.points - a.points);
+  const scoreDirection = data[0].scoreDirection;
 
-  return res.status(200).json({ scoreboard: sorted });
+  function sorting(SC) {
+    switch (SC) {
+      case 'DESC':
+        sorted = data[0].scoreboard_results.sort((a, b) => a.points - b.points);
+        break;
+
+      case 'ASC':
+        sorted = data[0].scoreboard_results.sort((a, b) => b.points - a.points);
+    }
+    return sorted;
+  }
+
+  return res.status(200).json({ scoreboard: sorting(scoreDirection) });
 };
 
 // testing other option
