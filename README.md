@@ -1,7 +1,7 @@
 # BackendApp
 
 This backEnd app is used for making scoreboards and saving results in them.
-Results can be sorted by ages in descending or ascending order.
+Results can be sorted by points in descending or ascending order.
 
 ## Running the app:
 
@@ -21,3 +21,12 @@ Application runs on port 3000 by default. It can be changed at index.js file.
   "scoreDirection": "ASC"
 }`  
 Choosing scoreBorads name and scores direction (descending 'DESC' or ascending 'ASC').
+
+#### /createScore
+
+`{
+  "scoreboard_id": "<scoreBoardsID>",
+  "points": 100,
+  "title": "James Bond"
+}`  
+Saving score to specific scoreBoard.
