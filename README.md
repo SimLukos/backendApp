@@ -9,10 +9,15 @@ Before running the app, you have to be installed Node.js.
 When using my source code, make sure to run
 `npm install` in the extracted folder.
 
-To start application run
-`npm start`
+To start application run`npm start`.
 Application runs on port 3000 by default. It can be changed at index.js file.
 
 ### A few samples of requests at some EndPoints:
 
-/createScoreboard
+#### /createScoreboard
+
+`{
+  "name": "Bowling",
+  "scoreDirection": "ASC"
+}`
+Choosing scoreBorads name and scores direction (descending or ascending).
