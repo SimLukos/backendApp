@@ -19,5 +19,5 @@ Application runs on port 3000 by default. It can be changed at index.js file.
 `{
   "name": "Bowling",
   "scoreDirection": "ASC"
-}`
-Choosing scoreBorads name and scores direction (descending or ascending).
+}`  
+Choosing scoreBorads name and scores direction (descending 'DESC' or ascending 'ASC').
