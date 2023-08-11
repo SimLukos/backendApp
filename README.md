@@ -30,3 +30,37 @@ Choosing scoreBorads name and scores direction (descending 'DESC' or ascending '
   "title": "James Bond"
 }`  
 Saving score to specific scoreBoard.
+
+#### /getAllResultsByScoreboardId/<scoreBoardsID>
+
+GET request to get results from the specific ScoreBoard.
+
+Output example:  
+`{
+  "scoreboard": [
+    {
+      "_id": "6373a5b145d946c847c468a8",
+      "scoreboard_id": "6373a52a45d946c847c4689d",
+      "points": 99,
+      "title": "Daniel",
+      "__v": 0,
+      "id": "6373a5b145d946c847c468a8"
+    },
+    {
+      "_id": "6373a5d245d946c847c468b2",
+      "scoreboard_id": "6373a52a45d946c847c4689d",
+      "points": 25,
+      "title": "James Bond",
+      "__v": 0,
+      "id": "6373a5d245d946c847c468b2"
+    },
+    {
+      "_id": "6373a5bf45d946c847c468ad",
+      "scoreboard_id": "6373a52a45d946c847c4689d",
+      "points": 11,
+      "title": "Magnusen",
+      "__v": 0,
+      "id": "6373a5bf45d946c847c468ad"
+    }
+  ]
+}`
